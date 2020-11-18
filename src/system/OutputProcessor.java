@@ -33,6 +33,7 @@ final class OutputProcessor implements Components.OutputProcessor {
 		 * Insert code to print orders with all order items:
 		 */
 		long priceTotal = 0;
+		long vatTotal = 0;
 
 		for (int orderIndex = 0; orderIndex < orders.size(); orderIndex++) {
 
@@ -52,6 +53,8 @@ final class OutputProcessor implements Components.OutputProcessor {
 
 				fullPrice += orders.get(orderIndex).getItems().get(itemIndex).getArticle().getUnitPrice()
 						* orders.get(orderIndex).getItems().get(itemIndex).getUnitsOrdered();
+				vatTotal += orderProcessor.vat(orders.get(orderIndex).getItems().get(itemIndex).getArticle().getUnitPrice()
+						* orders.get(orderIndex).getItems().get(itemIndex).getUnitsOrdered());
 			}
 			priceTotal += fullPrice;
 
@@ -68,7 +71,7 @@ final class OutputProcessor implements Components.OutputProcessor {
 		sbAllOrders.append("\n").append(fmtLine("-------------", "------------- -------------", 95))
 				.append("\n").append(fmtLine("Gesamtwert aller Bestellungen:", fmtPriceTotal, 95));
 		if(printVAT) {
-			String fmtVat = pad(fmtPrice(this.orderProcessor.vat(priceTotal), "", " EUR"), 14, true);
+			String fmtVat = pad(fmtPrice(vatTotal, "", " EUR"), 14, true);
 			sbAllOrders.append("\n").append(fmtLine("Im Gesamtwert enthaltene Mehrwertsteuer (19%):", fmtVat, 95));
 		}
 

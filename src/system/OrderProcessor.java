@@ -39,15 +39,15 @@ final class OrderProcessor implements Components.OrderProcessor {
 
 	@Override
 	public long vat(long grossValue) {
-		return grossValue / 100 * 16;
+		return this.vat(grossValue, 1);
 	}
 
 	@Override
 	public long vat(long grossValue, int rateIndex) {
 		if(rateIndex == 1) {
-			return this.vat(grossValue);
+			return Math.round(grossValue / 1.19 * 0.19);
 		} else if(rateIndex == 2) {
-			return grossValue / 100 * 7;
+			return Math.round(grossValue / 1.07 * 0.07);
 		} else {
 			return 0;
 		}
