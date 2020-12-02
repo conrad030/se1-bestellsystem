@@ -11,8 +11,16 @@ public class Customer {
 		
 		this.id = id;
 		this.firstName = "";
-		this.lastName = name;
-		this.contact = contact;
+		if(name == null) {
+			this.lastName = "";
+		} else {
+			this.lastName = name;
+		}
+		if(contact == null) {
+			this.contact = "";
+		} else {
+			this.contact = contact;
+		}
 	}
 	
 	public String getId() {
@@ -24,7 +32,11 @@ public class Customer {
 	}
 	
 	public void setFirstName(String newName) {
-		this.firstName = newName;
+		if(newName == null) {
+			this.firstName = "";
+		} else {
+			this.firstName = newName;
+		}
 	}
 	
 	public String getLastName() {
@@ -32,7 +44,11 @@ public class Customer {
 	}
 	
 	public void setLastName(String newName) {
-		this.lastName = newName;
+		if(newName == null) {
+			this.lastName = "";
+		} else {
+			this.lastName = newName;
+		}
 	}
 	
 //	public void setName(String name) {
@@ -58,11 +74,15 @@ public class Customer {
 //		}
 //	}
 //	
-//	public String getContact() {
-//		return this.contact;
-//	}
-//	
-//	public void setContact(String newContact) {
-//		this.contact = newContact;
-//	}
+	public String getContact() {
+		return this.contact;
+	}
+	
+	public void setContact(String newContact) {
+		if(newContact == null) {
+			this.contact = "";
+		} else {
+			this.contact = newContact;
+		}
+	}
 }
