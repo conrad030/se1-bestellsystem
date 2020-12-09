@@ -46,7 +46,7 @@ final class OutputProcessor implements Components.OutputProcessor {
 
 			for (int itemIndex = 0; itemIndex < orders.get(orderIndex).getItems().size(); itemIndex++) {
 				orderString += orders.get(orderIndex).getItems().get(itemIndex).getUnitsOrdered() + "x "
-						+ orders.get(orderIndex).getItems().get(itemIndex).getDesciption();
+						+ orders.get(orderIndex).getItems().get(itemIndex).getDescription();
 				if (itemIndex != orders.get(orderIndex).getItems().size() - 1) {
 					orderString += ", ";
 				}
